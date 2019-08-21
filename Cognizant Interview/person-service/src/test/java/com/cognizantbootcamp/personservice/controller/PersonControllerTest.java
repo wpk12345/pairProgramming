@@ -13,6 +13,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -32,10 +33,16 @@ public class PersonControllerTest {
 
     private ObjectMapper mapper = new ObjectMapper();
 
-
+    private String personJson;
+    
     @Before
     public void setUp() throws Exception {
-
+        Person person = new Person();
+        person.setId(1);
+        person.setName("Name");
+        person.setAge(30);
+        personJson = mapper.writeValueAsString(person);
+        Mockito.when(dao.findPersonByName("Name")).thenReturn(person);
     }
 
     @Test
@@ -62,12 +69,20 @@ public class PersonControllerTest {
     }
 
     @Test
-    public void getAll() throws Exception {
-
+    public void getByName() throws Exception {
         Person person = new Person();
-        
+        person.setId(1);
+        person.setName("Name");
+        person.setAge(30);
+        Person person1 = new Person();
+        person1.setId(2);
+        person1.setName("Name one");
+        person1.setAge(35);
+        when(dao.findPersonByName(person.getName())).thenReturn(person);
+        mockMvc.perform(MockMvcRequestBuilders.get("/Name")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().json(personJson));
     }
-
-
-
 }

@@ -27,6 +27,6 @@ public class ClientControllerTest {
 
     @Before
     public void setUp() throws Exception {
-        Person 
+        Person
     }
 }
