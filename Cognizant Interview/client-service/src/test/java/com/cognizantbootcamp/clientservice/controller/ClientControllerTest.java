@@ -1,10 +1,12 @@
 package com.cognizantbootcamp.clientservice.controller;
 
+import com.cognizantbootcamp.clientservice.dto.Person;
 import com.cognizantbootcamp.clientservice.service.ServiceLayer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -27,6 +29,11 @@ public class ClientControllerTest {
 
     @Before
     public void setUp() throws Exception {
-        Person
+        Person person = new Person();
+        person.setId(1);
+
+        clientJson = mapper.writeValueAsString(person);
+
+        Mockito.when(service.)
     }
 }
