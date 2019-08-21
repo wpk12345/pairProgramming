@@ -34,7 +34,7 @@ public class PersonControllerTest {
     private ObjectMapper mapper = new ObjectMapper();
 
     private String personJson;
-    
+
     @Before
     public void setUp() throws Exception {
         Person person = new Person();
