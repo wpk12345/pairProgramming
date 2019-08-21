@@ -13,7 +13,7 @@ public interface PersonClient {
     @RequestMapping(value = "/person/addperson", method = RequestMethod.POST)
     Person createPerson(@RequestBody Person person);
 
-    @RequestMapping(value = "/person/{name}", method = RequestMethod.GET)
+    @RequestMapping(value = "/person/name/{name}", method = RequestMethod.GET)
     Person getPersonByName(@PathVariable("name")String name);
 
 }

@@ -27,13 +27,13 @@ public class ClientControllerTest {
 
     private String clientJson;
 
-    @Before
-    public void setUp() throws Exception {
-        Person person = new Person();
-        person.setId(1);
-
-        clientJson = mapper.writeValueAsString(person);
-
-        Mockito.when(service.)
-    }
+//    @Before
+//    public void setUp() throws Exception {
+//        Person person = new Person();
+//        person.setId(1);
+//
+//        clientJson = mapper.writeValueAsString(person);
+//
+////        Mockito.when(service.)
+//    }
 }
